@@ -44,7 +44,7 @@ show_splash() {
     echo "╚══════╝╚═╝  ╚═╝╚═════╝╚═════╝ ╚═╝╚═╝  ╚═╝"
     echo -e "\e[0m"
     echo "========================================================"
-    echo "         INSTALADOR ZABBIX 6 LTS (Somente Zabbix)"
+    echo "         INSTALADOR ZABBIX 7 LTS (Somente Zabbix)"
     echo "           PARA ${SYSTEM^^} $OS_VERSION ($OS_CODENAME)"
     echo "========================================================"
     echo ""
@@ -55,7 +55,7 @@ show_splash
 
 echo -e "${BLUE}========================================================${NC}"
 echo -e "          ${YELLOW}🚀 Instalação Automatizada Segura${NC}"
-echo -e "          ${YELLOW}📜 Zabbix 6.0 LTS (MySQL)${NC}"
+echo -e "          ${YELLOW}📜 Zabbix 7.0 LTS (MySQL)${NC}"
 echo -e "${BLUE}========================================================${NC}"
 
 # === VERIFICAÇÃO DE ROOT ===
@@ -106,22 +106,22 @@ SET GLOBAL log_bin_trust_function_creators = 1;
 FLUSH PRIVILEGES;
 MYSQL_SCRIPT
 
-# === INSTALAÇÃO DO ZABBIX 6.0 (COM TRAVA DE SEGURANÇA) ===
-echo -e "\n${GREEN}📊 [ETAPA 4/7] Adicionando repositório oficial do Zabbix 6.0 LTS...${NC}"
+# === INSTALAÇÃO DO ZABBIX 7.0 (COM TRAVA DE SEGURANÇA) ===
+echo -e "\n${GREEN}📊 [ETAPA 4/7] Adicionando repositório oficial do Zabbix 7.0 LTS...${NC}"
 
 if [[ "$SYSTEM" == "ubuntu" && "$OS_VERSION" == "24.04" ]]; then
-    REPO_URL="https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-9%2Bubuntu24.04_all.deb"
+    REPO_URL="https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_7.0-5%2Bubuntu24.04_all.deb"
 elif [[ "$SYSTEM" == "debian" ]]; then
-    REPO_URL="https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_6.0-5+debian12_all.deb"
+    REPO_URL="https://repo.zabbix.com/zabbix/7.0/debian/pool/main/z/zabbix-release/zabbix-release_latest_7.0+debian12_all.deb"
 else
-    REPO_URL="https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-5+ubuntu${OS_VERSION}_all.deb"
+    REPO_URL="https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu${OS_VERSION}_all.deb"
 fi
 
 echo -e "${YELLOW}Tentando baixar o repositório: ${REPO_URL}${NC}"
 
 if ! wget -O zabbix-release.deb "$REPO_URL"; then
     echo -e "\n${RED}======================================================================${NC}"
-    echo -e "${RED}❌ FALHA CRÍTICA: O repositório do Zabbix 6.0 não foi encontrado!${NC}"
+    echo -e "${RED}❌ FALHA CRÍTICA: O repositório do Zabbix 7.0 não foi encontrado!${NC}"
     echo -e "${RED}A execução do script será abortada para evitar quebrar seu servidor.${NC}"
     echo -e "${RED}======================================================================${NC}"
     exit 1
@@ -182,7 +182,7 @@ fi
 # === INFORMAÇÕES DE ACESSO ===
 echo -e "\n${GREEN}✅ ✅ ✅ Instalação concluída com sucesso! ✅ ✅ ✅${NC}"
 echo -e "${BLUE}========================================================${NC}"
-echo -e "🌐 ${YELLOW}ACESSO AO ZABBIX 6.0 LTS:${NC}"
+echo -e "🌐 ${YELLOW}ACESSO AO ZABBIX 7.0 LTS:${NC}"
 echo -e "   URL:      ${GREEN}http://$(hostname -I | awk '{print $1}')/zabbix${NC}"
 echo -e "   Usuário:  ${YELLOW}Admin${NC}"
 echo -e "   Senha:    ${YELLOW}zabbix${NC}"
