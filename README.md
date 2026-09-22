@@ -58,7 +58,7 @@ O script detecta automaticamente o sistema operacional.
 
 Atualmente suporta:
 
-- Debian 12
+- Debian 12 e 13
 - Ubuntu 22.04
 - Ubuntu 24.04
 
